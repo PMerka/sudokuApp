@@ -1,4 +1,4 @@
-import { Grid, GridUpdates } from "../../hooks/useGridReducer";
+import { Grid, GridUpdates } from "../../hooks/useGridState";
 import Cell from "./Cell/Cell";
 import Row from "./Row/Row";
 import { useGridFocus } from "./UseGridFocus";
@@ -23,16 +23,14 @@ export default function SudokuGrid({
                 if (el) cellRefs.current[pos] = el;
               }}
               position={{ x, y }}
-              value={cell.value}
+              value={cell.value === 0 ? "" : cell.value}
               isInit={cell.isInit}
               onKeyDown={(e) => keyDownHandler(e)}
               onFocus={() => focusHandler({ x, y })}
               onChange={(e) => {
-                console.log(e.target.value);
-                gridUpdates.updateSingleCell(
-                  { value: Number(e.target.value), isInit: true },
-                  { x, y }
-                );
+                const value = Number(e.target.value);
+                const isInit = Boolean(value);
+                gridUpdates.updateSingleCell({ value, isInit }, { x, y });
               }}
             ></Cell>
           ))}

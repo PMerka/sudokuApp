@@ -24,7 +24,7 @@ export default function Cell({
   return (
     <div
       className={`aspect-square flex-1 items-center justify-center md:text-xl border-solid border-gray-300 ${
-        isDarkBg && "bg-gray-200"
+        isDarkBg && "bg-blue-100"
       } border-2 `}
     >
       <input

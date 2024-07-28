@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export interface Cell {
   value: number;
@@ -34,7 +34,7 @@ export interface GridUpdates {
 
 const initValue = getInitGrid();
 
-const useGridReducer = () => {
+const useGridState = () => {
   const [gridState, setGridState] = useState(initValue);
 
   const updates = {
@@ -49,7 +49,7 @@ const useGridReducer = () => {
         newValue.value > 9 ||
         newValue.value < 0
       ) {
-        return;
+        newValue.value = 0;
       }
       const { x, y } = position;
       newGridState[y][x] = newValue;
@@ -63,4 +63,4 @@ const useGridReducer = () => {
   return [gridState, updates] as const;
 };
 
-export default useGridReducer;
+export default useGridState;
