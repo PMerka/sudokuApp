@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Grid, GridUpdates } from "./useGridState";
 
 const testWorker = new Worker(new URL("./webworker.ts", import.meta.url), {
