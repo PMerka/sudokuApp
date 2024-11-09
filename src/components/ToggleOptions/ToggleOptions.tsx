@@ -13,7 +13,7 @@ export default function ToggleOptions({
   const optionNumber = optionsList.indexOf(active);
   const optionsLength = optionsList.length;
   return (
-    <>
+    <div>
       <div className="relative w-fit flex bg-blue-100 rounded m-auto">
         <div
           className={`absolute "left-0" translate-x-full
@@ -23,8 +23,9 @@ export default function ToggleOptions({
             transform: `translate(${optionNumber * 100}%, 0)`,
           }}
         ></div>
-        {optionsList.map((option) => (
+        {optionsList.map((option, index) => (
           <button
+            key={index}
             onClick={() => setOption(option)}
             className={`${
               active === option && "text-white"
@@ -39,6 +40,6 @@ export default function ToggleOptions({
         {mode === MODE.GENERATOR &&
           "Create Sudoku puzzles with single solution."}
       </div>
-    </>
+    </div>
   );
 }

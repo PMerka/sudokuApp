@@ -1,5 +1,15 @@
 import { ReactNode } from "react";
 
-export default function Row({ children }: { children: ReactNode }) {
-  return <div className="flex grow">{children}</div>;
+export default function Row({
+  children,
+  id,
+}: {
+  children: ReactNode;
+  id: string;
+}) {
+  return (
+    <div id={id} className="flex grow">
+      {children}
+    </div>
+  );
 }

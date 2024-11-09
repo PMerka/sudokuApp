@@ -30,7 +30,7 @@ export default function Cell({
       <input
         ref={inputRefs}
         className={`w-full h-full text-center bg-transparent ${
-          isInit && "font-bold"
+          isInit && "font-extrabold"
         }`}
         onDrag={(e) => e.preventDefault()}
         {...props}

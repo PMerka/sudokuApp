@@ -15,9 +15,10 @@ export default function SudokuGrid({
   return (
     <div className="flex flex-col h-full border-solid border-gray-400 border-4">
       {data.map((row, y) => (
-        <Row>
+        <Row key={y} id={`${y}`}>
           {row.map((cell, x) => (
             <Cell
+              key={`${x} ${y}`}
               inputRefs={(el) => {
                 const pos = 9 * y + x;
                 if (el) cellRefs.current[pos] = el;

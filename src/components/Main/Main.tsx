@@ -31,15 +31,25 @@ export default function Main() {
           Sudoku solver and puzzle generator
         </h1>
       </Box>
+
       <Box className="col-span-5 lg:col-span-3 aspect-square">
         <SudokuGrid data={state} gridUpdates={gridUpdates} />
       </Box>
-      <Box className=" col-span-5 lg:col-span-2 min-h-60">
+
+      <Box className="col-span-5 lg:col-span-2 min-h-60 flex flex-col gap-3">
+        <div className="text-center font-bold text-lg">
+          <h2>Options</h2>
+        </div>
+
+        <hr />
+
         <ToggleOptions
           active={mode}
           setOption={(value: string) => setMode(value as MODE)}
           mode={mode}
         />
+
+        <hr />
 
         <div className="flex justify-center gap-3 flex-wrap px-4">
           <button
@@ -63,6 +73,22 @@ export default function Main() {
             Clear canvas
           </button>
         </div>
+
+        <hr />
+      </Box>
+
+      <Box className="col-span-5">
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Impedit cum
+        saepe magni in at accusantium amet veritatis, voluptatibus minus id
+        nobis accusamus perferendis asperiores? Deleniti impedit eum repellendus
+        laboriosam cumque at qui reprehenderit pariatur, molestias iure officiis
+        magnam earum quas autem atque, ea animi deserunt laborum voluptate
+        labore. Animi, ipsam neque. Doloremque sapiente culpa aliquam debitis
+        et! Ea, officiis nihil enim quaerat recusandae perspiciatis quos minus.
+        Perspiciatis sint voluptatibus asperiores explicabo a enim odit aut
+        facilis quia consequuntur est doloribus aperiam, laboriosam hic possimus
+        sit reiciendis dignissimos tempore maiores sunt fugit harum soluta quasi
+        nemo. Sed suscipit temporibus iste in?
       </Box>
     </div>
   );
