@@ -1,17 +1,17 @@
 import Box from "../Box/Box";
 import SudokuGrid from "../SudokuGrid/SudokuGrid";
-import useGridReducer from "../../hooks/useGridState";
-import useCalculation from "../../hooks/useCalculation";
+import useGridState from "src/hooks/useGridState";
+import useCalculation from "src/hooks/useCalculation";
 import { useState } from "react";
 import ToggleOptions from "../ToggleOptions/ToggleOptions";
 
 export enum MODE {
-  SOLVER = "SOLVER",
   GENERATOR = "GENERATOR",
+  SOLVER = "SOLVER",
 }
 
 export default function Main() {
-  const [state, gridUpdates] = useGridReducer();
+  const [state, gridUpdates] = useGridState();
   const { loading, handlers } = useCalculation(state, gridUpdates);
   const [mode, setMode] = useState(MODE.GENERATOR);
 
@@ -38,20 +38,29 @@ export default function Main() {
         <ToggleOptions
           active={mode}
           setOption={(value: string) => setMode(value as MODE)}
+          mode={mode}
         />
 
-        <div className="text-center text-lg px-4 py-4 italic">
-          {mode === MODE.SOLVER && "Find solution of any sudoku puzzle."}
-          {mode === MODE.GENERATOR &&
-            "Create Sudoku puzzles with single solution."}
-        </div>
-        <div className="flex justify-center">
+        <div className="flex justify-center gap-3 flex-wrap px-4">
           <button
             disabled={loading}
-            className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded disabled:opacity-30 min-w-32"
+            className="bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-4 rounded disabled:opacity-30 min-w-32"
             onClick={() => handleRun()}
           >
             {!loading ? "Start" : "Loading ..."}
+          </button>
+          <button
+            className="bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-4 rounded min-w-32"
+            onClick={() => handlers.handleTerminate()}
+          >
+            Stop
+          </button>
+
+          <button
+            className="bg-gray-600 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded min-w-32"
+            onClick={() => gridUpdates.clearGrid()}
+          >
+            Clear canvas
           </button>
         </div>
       </Box>

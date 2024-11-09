@@ -19,7 +19,6 @@ export class SudokuGenerator extends SudokuGrid {
   updateGridReactState: {
     (x: number, y: number, grid: number[][]): void;
   } | null;
-  delay: number;
   running: boolean;
   allowedValues: number[][][];
   numberOfSolutions: number;
@@ -28,7 +27,6 @@ export class SudokuGenerator extends SudokuGrid {
   constructor() {
     super();
     this.updateGridReactState = null;
-    this.delay = 0;
     this.running = false;
     this.allowedValues = this.getAllowedValues();
     this.numberOfSolutions = 0;
